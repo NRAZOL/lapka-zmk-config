@@ -52,16 +52,6 @@
             bindings = <&kp SPACE>, <&lg_tog>;
             mods = <(MOD_LGUI)>;
         };
-
-        /* hold-tap: hold = MOU layer, tap = lg_space */
-        mou_sp: mou_space {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
-            flavor = "balanced";
-            bindings = <&mo>, <&lg_space>;
-        };
     };
 
     macros {
@@ -136,14 +126,15 @@
             key-positions = <2 3>;
             layers = <RU>;
         };
+
+        combo_mouse {
+            bindings = <&mo MOU>;
+            key-positions = <12 13>;
+        };
     };
 
     keymap {
         compatible = "zmk,keymap";
-
-        /* ============================================
-         *  Home row mods order: GUI ALT CTRL SHFT | SHFT CTRL ALT GUI
-         * ============================================ */
 
         en {
             display-name = "Base";
@@ -151,7 +142,7 @@
 &kp Q        &kp W        &kp E         &kp R          &kp T              &kp Y       &kp U         &kp I         &kp O        &kp P
 &hml LGUI A  &hml LALT S  &hml LCTRL D  &hml LSHFT F   &kp G              &kp H       &hmr RSHFT J  &hmr RCTRL K  &hmr LALT L  &hmr RGUI SEMI
 &kp Z        &kp X        &kp C         &kp V          &kp B              &kp N       &kp M         &kp COMMA     &kp DOT      &kp SQT
-                           &kp TAB       &mo NAV        &mou_sp MOU 0      &kp RET     &mo SYM_EN    &kp BSPC
+                           &kp TAB       &mo NAV        &lg_space          &kp RET     &mo SYM_EN    &kp BSPC
             >;
         };
 
@@ -161,7 +152,7 @@
 &kp RU_CYRILLIC_SHORT_I   &kp RU_CYRILLIC_TSE         &kp RU_CYRILLIC_U          &kp RU_CYRILLIC_KA        &kp RU_CYRILLIC_IE            &kp RU_CYRILLIC_EN  &kp RU_CYRILLIC_GHE        &kp RU_CYRILLIC_SHA        &kp RU_CYRILLIC_SHCHA     &kp RU_CYRILLIC_ZE
 &hml LGUI RU_CYRILLIC_EF  &hml LALT RU_CYRILLIC_YERU  &hml LCTRL RU_CYRILLIC_VE  &hml LSHFT RU_CYRILLIC_A  &kp RU_CYRILLIC_PE            &kp RU_CYRILLIC_ER  &hmr RSHFT RU_CYRILLIC_O   &hmr RCTRL RU_CYRILLIC_EL  &hmr LALT RU_CYRILLIC_DE  &hmr RGUI RU_CYRILLIC_ZHE
 &kp RU_CYRILLIC_YA        &kp RU_CYRILLIC_CHE         &kp RU_CYRILLIC_ES         &kp RU_CYRILLIC_EM        &kp RU_CYRILLIC_I             &kp RU_CYRILLIC_TE  &kp RU_CYRILLIC_SOFT_SIGN  &kp RU_CYRILLIC_BE         &kp RU_CYRILLIC_YU        &kp RU_CYRILLIC_E
-                                                        &kp TAB                    &mo NAV                   &mou_sp MOU 0                 &kp RET             &mo SYM_RU                 &kp BSPC
+                                                        &kp TAB                    &mo NAV                   &lg_space                     &kp RET             &mo SYM_RU                 &kp BSPC
             >;
         };
 
@@ -208,10 +199,10 @@
         mouse {
             display-name = "Mouse";
             bindings = <
-&none       &none       &none        &none        &none              &none       &none        &none        &none       &none
-&kp LGUI    &kp SLCK    &mkp RCLK    &mkp LCLK    &none              &none       &none        &none        &none       &none
-&none       &none       &none        &none        &none              &none       &none        &none        &none       &none
-                         &trans       &trans       &trans             &trans      &trans       &trans
+&none       &none           &none        &none        &none              &none       &none        &none            &none       &none
+&kp LGUI    &msc SCRL_DOWN  &mkp RCLK    &mkp LCLK    &mkp MCLK          &none       &none        &none            &none       &none
+&none       &msc SCRL_UP    &none        &none        &none              &none       &none        &none            &none       &none
+                             &trans       &trans       &trans             &trans      &trans       &trans
             >;
         };
     };
