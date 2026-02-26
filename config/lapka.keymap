@@ -167,6 +167,32 @@
             key-positions = <2 3>;
             layers = <RU>;
         };
+
+        /* X + C = точка */
+        dot_en {
+            bindings = <&kp DOT>;
+            key-positions = <21 22>;
+            layers = <EN>;
+        };
+
+        dot_ru {
+            bindings = <&kp RU_DOT>;
+            key-positions = <21 22>;
+            layers = <RU>;
+        };
+
+        /* C + V = запятая */
+        comma_en {
+            bindings = <&kp COMMA>;
+            key-positions = <22 23>;
+            layers = <EN>;
+        };
+
+        comma_ru {
+            bindings = <&kp RU_COMMA>;
+            key-positions = <22 23>;
+            layers = <RU>;
+        };
     };
 
     keymap {
@@ -216,7 +242,7 @@
             display-name = "Nav";
             bindings = <
 &kp N1         &kp N2    &kp N3     &kp N4     &kp N5             &kp N6          &kp N7           &kp N8           &kp N9        &kp N0
-&hml LGUI ESC  &kp LALT  &kp LCTRL  &kp LSHFT  &kp ENTER          &kp PSCRN       &hmr RSHFT LEFT  &hmr RCTRL DOWN  &hmr LALT UP  &hmr RGUI RIGHT
+&hml LGUI ESC  &kp LALT  &kp LCTRL  &kp LSHFT  &kp ENTER          &kp LG(LS(S))   &hmr RSHFT LEFT  &hmr RCTRL DOWN  &hmr LALT UP  &hmr RGUI RIGHT
 &layer_en    &kp HOME  &kp INS    &kp END    &kp DEL            &kp CAPS        &none            &kp PG_DN        &kp PG_UP     &layer_ru
                           &trans     &none      &trans             &trans          &mo ADJ          &trans
             >;
